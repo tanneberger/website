@@ -1,4 +1,4 @@
-{ lib, stdenv, nodejs, pnpm, static ? false }:
+{ lib, stdenv, nodejs, pnpm }:
 
 let
   manifest = lib.importJSON ./package.json;
@@ -14,7 +14,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   pnpmDeps = pnpm.fetchDeps {
     inherit (finalAttrs) pname version src;
-    hash = "sha256-lYQquccZlslDXWFZX0LGqZYNqKaMl2Nr3P4u1U+smTw=";
+    fetcherVersion = 1;
+    hash = "sha256-emuaFQEAuq2ZQc7STeh2JKCsDOFZjwExNszQ8THkv9g=";
   };
 
   nativeBuildInputs = [ nodejs pnpm.configHook ];
